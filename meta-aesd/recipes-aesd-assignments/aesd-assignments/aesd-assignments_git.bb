@@ -8,7 +8,7 @@ SRC_URI = "git://git@github.com/cu-ecen-aeld/assignments-3-and-later-ahovan;prot
 
 PV = "1.0+git${SRCPV}"
 # TODO: set to reference a specific commit hash in your assignment repo
-#SRCREV = "6846f2239b4c5ecf13e5f619191ff11b6a52e1c1"
+SRCREV = "bd8c89b4a1c65ea6ad2ffc55edb1539bbc79505c"
 
 # This sets your staging directory based on WORKDIR, where WORKDIR is defined at 
 # https://docs.yoctoproject.org/ref-manual/variables.html?highlight=workdir#term-WORKDIR
@@ -20,6 +20,8 @@ S = "${WORKDIR}/git/server"
 # See https://git.yoctoproject.org/poky/plain/meta/conf/bitbake.conf?h=kirkstone
 FILES:${PN} += "${bindir}/aesdsocket"
 FILES:${PN} += "${bindir}/aesdsocket-start-stop"
+
+INSANE_SKIP:${PN} += "ldflags"
 
 inherit update-rc.d
 INITSCRIPT_PACKAGES = "${PN}"
